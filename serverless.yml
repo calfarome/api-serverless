@@ -10,14 +10,14 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - dynamodb:*        
+        - dynamodb:*     
       Resource:
-        - arn:aws:dynamodb:us-east-1:285112773994:table/StartWarPeopleTable
+        - arn:aws:dynamodb:us-east-1:285112773994:table/StarWarPeopleTable
 
 functions:
-  startWar:
+  starWar:
     handler: handler.handler
-    events:      
+    events: 
       - http:
           path: /
           method: post
@@ -33,15 +33,15 @@ functions:
 
 resources:
   Resources:
-    StartWarPeopleTable:
+    StarWarPeopleTable:
       Type: 'AWS::DynamoDB::Table'
       Properties: 
-        TableName: StartWarPeopleTable
+        TableName: StarWarPeopleTable
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
-          - AttributeName: nombre
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-            - AttributeName: nombre
-              KeyType: HASH  
+          - AttributeName: id
+            KeyType: HASH
 

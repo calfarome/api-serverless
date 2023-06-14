@@ -2,13 +2,13 @@ const express = require('express');
 const AWS = require('aws-sdk')
 const axios = require('axios')
 
-const startWarController = require('../controllers/startWarController')
+const starWarController = require('../controllers/starWarController')
 
 const routes = express.Router({ mergeParams: true })
 
 routes.route('/')
-  .post(startWarController.createStartWarPeople)
-  .get(startWarController.getStartWaPeople)
+  .post(starWarController.createStarWarPeople)
+  .get(starWarController.getStarWaPeople)
 
 
 module.exports = { routes, };
