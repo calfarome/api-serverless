@@ -5,7 +5,7 @@ const axios = require('axios');
 
  async function createStartWarPeople(req, res) {
 
-    // Instancion coneccion a db 
+    // Instancio coneccion a db 
     const db = new AWS.DynamoDB.DocumentClient()
   
     // Modelo de datos
@@ -15,7 +15,7 @@ const axios = require('axios');
         // Consulto StartWar API(modelo People);
         const result = await axios.get("https://swapi.py4e.com/api/people/1/");
 
-        // Mapeo atributo en atributos en español     
+        // Mapeo atributos en español     
         startWarPeople = {
             año_nacimiento:result.data.birth_year,
             color_ojos:result.data.eye_color,
@@ -39,7 +39,7 @@ const axios = require('axios');
         console.log(err)
     }
 
-    // Inserto a base de datos
+    // Inserto a base de datos dynamodb
     await db.put({
         TableName:'StartWarPeopleTable',
         Item: startWarPeople
