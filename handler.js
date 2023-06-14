@@ -1,10 +1,10 @@
 const awsServerlessExpress = require('aws-serverless-express');
 const app = require('./src/index');
 
-// App express como serverless
+// Creo mi app como  aws serverless
 const server =  awsServerlessExpress.createServer(app);
 
-// Funciones lamda
+// Función  lambda
 module.exports.handler = (event, context)=>{
   return awsServerlessExpress.proxy(server, event, context);
 }
